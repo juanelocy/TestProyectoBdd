@@ -1,0 +1,192 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #D2B48C; /* Color de fondo marrón claro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #F5F5DC; /* Color beige */
+    border: 1px solid #A0522D; /* Borde marrón oscuro */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #A0522D; /* Borde inferior marrón oscuro */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #A0522D; /* Color marrón oscuro */
+}
+
+.menu-icon {
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #A0522D; /* Color marrón oscuro */
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    background-color: #F5F5DC; /* Color beige */
+    border: 1px solid #A0522D; /* Borde marrón oscuro */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu ul li {
+    padding: 10px 20px;
+}
+
+.dropdown-menu ul li a {
+    text-decoration: none;
+    color: #000; /* Color negro */
+}
+
+.dropdown-menu ul li a:hover {
+    color: #A0522D; /* Color marrón oscuro */
+}
+
+main h2 {
+    margin-top: 20px;
+    font-size: 1.75em;
+    color: #A0522D; /* Color marrón oscuro */
+}
+
+main h3 {
+    margin-top: 10px;
+    font-size: 1.25em;
+    color: #8B4513; /* Color marrón oscuro */
+}
+
+main p {
+    margin-top: 20px;
+    font-size: 1em;
+    line-height: 1.5;
+    color: #000; /* Color negro */
+}
+
+.dropdown-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu li {
+    position: relative;
+}
+
+.dropdown-menu a {
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    background: #f0f0f0;
+    color: #000;
+}
+
+.dropdown-menu a:hover {
+    background: #ddd;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #f0f0f0;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-menu li:hover .submenu {
+    display: block;
+}
+
+.submenu a {
+    padding: 10px;
+    white-space: nowrap; /* Evita que el texto se desborde */
+}
+
+.submenu a:hover {
+    background: #ccc;
+}
+
+.menu-icon {
+    cursor: pointer;
+}
+
+form {
+    margin-top: 20px;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+form input, form textarea, form button {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #A0522D; /* Borde marrón oscuro */
+    border-radius: 4px;
+    width: calc(100% - 22px); /* Ajusta el tamaño del campo */
+    box-sizing: border-box; /* Para incluir el padding y el borde en el tamaño total */
+}
+
+form button {
+    background-color: #A0522D; /* Color marrón oscuro */
+    color: #F5F5DC; /* Color beige */
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #8B4513; /* Color marrón más oscuro */
+}
+
+#searchResults {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.eliminar {
+    background-color: #A52A2A; /* Color rojo marrón */
+    color: white;
+}
+
+.volver {
+    background-color: #2d66af; /* Color rojo marrón */
+    color: white;
+}
+
+.agregar {
+    background-color: #228B22; /* Color verde */
+    color: white;
+}

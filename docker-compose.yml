@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: mercado
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adminpassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./CreateTable.sql:/docker-entrypoint-initdb.d/CreateTable.sql
+      - ./InsertData.sql:/docker-entrypoint-initdb.d/InsertData.sql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+
+  web:
+    image: php:7.4-apache
+    volumes:
+      - ./html:/var/www/html
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_NAME: mercado
+      DB_USER: admin
+      DB_PASSWORD: adminpassword
+
+volumes:
+  pgdata:
