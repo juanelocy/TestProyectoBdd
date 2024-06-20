@@ -1,3 +1,22 @@
+<?php
+require_once 'conexion.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['idPuesto'], $_POST['idComerciante'], $_POST['fechaInicio'], $_POST['fechaFin'], $_POST['monto'])) {
+        $idPuesto = $_POST['idPuesto'];
+        $idComerciante = $_POST['idComerciante'];
+        $fechaInicio = $_POST['fechaInicio'];
+        $fechaFin = $_POST['fechaFin'];
+        $monto = $_POST['monto'];
+
+        $stmt = $pdo->prepare("INSERT INTO Arrendamientos (ID_Puesto, ID_Comerciante, Fecha_Inicio, Fecha_Fin, Monto) VALUES (?, ?, ?, ?, ?)");
+        $stmt->execute([$idPuesto, $idComerciante, $fechaInicio, $fechaFin, $monto]);
+
+        echo "Arrendamiento agregado correctamente.";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 

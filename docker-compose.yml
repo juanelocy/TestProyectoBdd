@@ -1,38 +1,36 @@
 version: '3.8'
 
 services:
-  db:
-    image: postgres:latest
-    environment:
-      POSTGRES_DB: mercado
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: adminpassword
+  web:
+    image: php:7.4-apache
+    container_name: php-web
+    volumes:
+      - ./html:/var/www/html
+      - ./php.ini:/usr/local/etc/php/php.ini
     ports:
-      - "5432:5432"
+      - "8081:80"
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    container_name: postgres-db
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./CreateTable.sql:/docker-entrypoint-initdb.d/CreateTable.sql
       - ./InsertData.sql:/docker-entrypoint-initdb.d/InsertData.sql
-
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - "8080:8080"
-
-  web:
-    image: php:7.4-apache
-    volumes:
-      - ./html:/var/www/html
-    ports:
-      - "80:80"
-    depends_on:
-      - db
     environment:
-      DB_HOST: db
-      DB_NAME: mercado
-      DB_USER: admin
-      DB_PASSWORD: adminpassword
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "5433:5432"
 
 volumes:
-  pgdata:
+  db-data:

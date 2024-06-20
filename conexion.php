@@ -1,14 +1,26 @@
 <?php
-$servidor = "localhost"; // Cambia esto si tu servidor MySQL está en otro lugar
-$usuario = "root";
-$contrasena = "JcYm672122";
-$basedatos = "pruebaConexion";
+require_once 'vendor/autoload.php';
 
-// Crear conexión
-$conexion = new mysqli($servidor, $usuario, $contrasena, $basedatos);
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
-// Comprobar conexión
-if ($conexion->connect_error) {
-    die("Conexión fallida: " . $conexion->connect_error);
+$host = $_ENV['DB_HOST'];
+$db = $_ENV['DB_NAME'];
+$user = $_ENV['DB_USER'];
+$pass = $_ENV['DB_PASSWORD'];
+$charset = 'utf8';
+
+$dsn = "pgsql:host=$host;port={$_ENV['DB_PORT']};dbname=$db";
+
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+];
+
+try {
+    $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (\PDOException $e) {
+    throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 ?>

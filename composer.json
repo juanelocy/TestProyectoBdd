@@ -1,0 +1,20 @@
+{
+    "name": "admin_mercado_muni/u1proyecto-bdd",
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "require-dev": {
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "AdminMercadoMuni\\U1proyectoBdd\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "juanelocy",
+            "email": "jcyasig2@espe.edu.ec"
+        }
+    ]
+}
