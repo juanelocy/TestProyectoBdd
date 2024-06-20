@@ -1,10 +1,8 @@
-# Dockerfile for PostgreSQL
 FROM postgres:latest
 
-ENV POSTGRES_DB mercado
-ENV POSTGRES_USER admin
-ENV POSTGRES_PASSWORD adminpassword
+ENV POSTGRES_DB=${DB_NAME}
+ENV POSTGRES_USER=${DB_USER}
+ENV POSTGRES_PASSWORD=${DB_PASSWORD}
 
-# Copy initialization scripts
-COPY CreateTable.sql /docker-entrypoint-initdb.d/
-COPY InsertData.sql /docker-entrypoint-initdb.d/
+COPY script_bdd/CreateTable.sql /docker-entrypoint-initdb.d/
+COPY script_bdd/InsertData.sql /docker-entrypoint-initdb.d/
