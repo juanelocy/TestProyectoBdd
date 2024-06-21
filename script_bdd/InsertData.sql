@@ -1,3 +1,9 @@
+-- Insertar datos en la tabla administrador
+INSERT INTO Adminis (nombre, apellido, correo, contraseña) VALUES
+('Gregory', 'Chevez', 'kgchevez@espe.edu.ec','kgchevez'),
+('Juan', 'Yasig', 'jcyasig@espe.edu.ec', 'jcyasig'),
+('Melany', 'Moreira', 'mrmoreira@espe.edu.ec', 'mrmoreira');
+
 -- Insertar datos en la tabla Puestos
 INSERT INTO Puestos (Ubicación, Estado, Tamaño, Precio_Alquiler) VALUES
 ('Zona A1', 'disponible', '10x10', 100.00),

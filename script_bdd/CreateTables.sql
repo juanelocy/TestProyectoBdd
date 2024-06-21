@@ -1,5 +1,11 @@
 -- Eliminar tablas si existen
 DO $$ BEGIN
+    IF EXISTS (SELECT 1 FROM pg_tables WHERE tablename = 'Adminis') THEN
+        DROP TABLE IF EXISTS Adminis CASCADE;
+    END IF;
+END $$;
+
+DO $$ BEGIN
     IF EXISTS (SELECT 1 FROM pg_tables WHERE tablename = 'puestos') THEN
         DROP TABLE IF EXISTS puestos CASCADE;
     END IF;
@@ -70,6 +76,15 @@ DO $$ BEGIN
         DROP TABLE IF EXISTS tareas_mantenimiento CASCADE;
     END IF;
 END $$;
+
+-- Tabla Inicio Sesion Adminitrador
+CREATE TABLE Adminis (
+    ID_Admin SERIAL PRIMARY KEY,
+    nombre VARCHAR(100),
+    apellido VARCHAR(20),
+    correo VARCHAR(50),
+    contraseña VARCHAR(50)
+);
 
 -- Tabla Puestos
 CREATE TABLE Puestos (
